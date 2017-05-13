@@ -24,6 +24,11 @@ SLEngineItf engineEngine = NULL;
 SLObjectItf outputMixObject = NULL;
 SLObjectItf engineObject = NULL;
 
+// Horrible kludge for Chromebooks -- some Chrome library ties to 
+//  call this function, even though (presumably) no cryptography
+//  is actually done. So somebody needs to provide the symbol. 
+void CRYPTO_library_init(void){}
+
 void play (const char *uri, char **error)
   {
   SLPlayItf uriPlayerPlay = NULL;
